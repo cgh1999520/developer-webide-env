@@ -14,6 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
@@ -23,9 +28,5 @@ jobs:
         push: true
         # 给清单打上多个标签
         tags: |
-          cgh1999520/webide-py-node:latest
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/webide-py-node:latest
+
