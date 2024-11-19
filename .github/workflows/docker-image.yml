@@ -17,10 +17,10 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./py-node/Dockerfile
+        context: ./py-node
+        file: ./Dockerfile
         # 镜像推送时间
-        push: ${{ github.event_name != 'pull_request' }}
+        push: true
         # 给清单打上多个标签
         tags: |
           cgh1999520/webide-py-node:latest
