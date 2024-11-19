@@ -14,7 +14,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: cd py-node && docker build . --file Dockerfile --tag cgh199952/webide-py-node
-    - name: Push Docker image
-      run: docker login -u cgh1999520 -p ""
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: ./py-node
+        file: ./Dockerfile
+        # 所需要的体系结构，可以在 Available platforms 步骤中获取所有的可用架构
+        platforms: linux/amd64,linux/arm64/v8
+        # 镜像推送时间
+        push: ${{ github.event_name != 'pull_request' }}
+        # 给清单打上多个标签
+        tags: |
+          cgh1999520/webide-py-node:latest
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
