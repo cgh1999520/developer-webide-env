@@ -17,8 +17,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: ./py-node
-        file: ./Dockerfile
+        context: .
+        file: ./py-node/Dockerfile
         # 镜像推送时间
         push: true
         # 给清单打上多个标签
