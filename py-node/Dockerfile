@@ -54,5 +54,5 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
 WORKDIR /home/coder
 
 EXPOSE 8080
-
-CMD ["bash", "-c", "source ~/.bashrc && exec bash", "code-server"]
+ENTRYPOINT ["bash", "-c", "source ~/.bashrc && exec bash"]
+CMD ["code-server"]
