@@ -55,4 +55,4 @@ WORKDIR /home/coder
 
 EXPOSE 8080
 
-ENTRYPOINT ["bash", "-c", "source ~/.bashrc && exec bash", "/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080", "."]
+CMD ["bash", "-c", "source ~/.bashrc && exec bash", "code-server"]
