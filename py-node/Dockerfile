@@ -55,4 +55,4 @@ WORKDIR /home/coder
 
 EXPOSE 8080
 ENTRYPOINT ["bash", "-c", "source ~/.bashrc && exec bash"]
-CMD ["code-server"]
+CMD ["code-server", "&"]
