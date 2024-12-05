@@ -54,4 +54,4 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
 WORKDIR /home/coder
 
 EXPOSE 8080
-ENTRYPOINT ["bash", "-c", "source ~/.bashrc && exec bash", "/usr/bin/entrypoint.sh"]
+ENTRYPOINT ["bash", "-c", "source ~/.bashrc && exec bash", "/usr/bin/entrypoint.sh ."]
