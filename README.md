@@ -27,7 +27,7 @@ We're planning to integrate more development environments into this Docker image
 To launch the docker image:
 
 ```bash
-docker run -it --name code-server -p 127.0.0.1:8080:8080 \
+docker run -it --name code-server -p 127.0.0.1:8080:8181 \
   -v "$HOME/.local:/home/coder/.local" \
   -v "$HOME/.config:/home/coder/.config" \
   -v "$PWD:/home/coder/project" \
