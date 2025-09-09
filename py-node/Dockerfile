@@ -44,10 +44,11 @@ RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc && \
     echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc  
 
 # 加载 pyenv（为了在Docker构建时可以使用pyenv）  
-RUN bash -c "source ~/.bashrc && pyenv install 3.6 && pyenv global 3.6"  
+RUN bash -c "source ~/.bashrc && pyenv install 3.12 && pyenv global 3.12"  
 
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs && npm install -g yarn pnpm && \
+    yarn config set registry https://registry.npmmirror.com && pnpm config set registry https://registry.npmmirror.com
 
 # 确保终端使用pyenv（为了在后续的docker run中能正常使用）  
 
